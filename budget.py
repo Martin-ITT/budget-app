@@ -17,11 +17,15 @@
 # https://github.com/ShreyasSubhedar/fcc-budget-app/blob/master/budget.py
 
 class Budget():
-    def __init__(self, balance):
+    num_of_categories = 0
+
+    def __init__(self, name, balance):
+        self.name = name
         self.balance = balance
+        Budget.num_of_categories += 1
 
     def __repr__(self):
-        return f'The balance is currently: {self.balance}'
+        return f'Name: {self.name}, balance: {self.balance}'
 
     def deposit(self, amount):
         self.balance += amount
