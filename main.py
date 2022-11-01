@@ -30,17 +30,19 @@ while control:
     if selection == 1:
         clear()
         print("Create a category.")
-        name = input("Please enter category name: ")
-        value = int(input("Please enter budget: "))
-        
-        if name in names:
-            print("Error, name already exists. Category not created.")
-            wait_here()
-        else:
-            budgets.append(Budget(name, value))
-            names.append(name)
-            print(f"Category {name} created. Budget: {budget}.")
-            wait_here()
+        try:
+            name = input("Please enter category name - min 3 characters: ")
+            value = int(input("Please enter budget: "))
+            if name in names or len(name) < 3 or name.isspace():
+                print("Error, name already exists, is not long enough or is blank. Category not created.")
+                wait_here()
+            else:
+                budgets.append(Budget(name, value))
+                names.append(name)
+                print(f"Category {name} created. Budget: {value}.")
+                wait_here()
+        except ValueError:
+            print("Error. Invalid input!")
         # print(f"Category {name} created.")
         # print(name.balance)
 
