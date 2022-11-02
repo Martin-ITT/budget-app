@@ -43,13 +43,27 @@ while control:
                 wait_here()
         except ValueError:
             print("Error. Invalid input!")
-        # print(f"Category {name} created.")
-        # print(name.balance)
+            wait_here()
 
     elif selection == 2:
         clear()
-        print("Make withdrawal.")
-        print(budgets)
+        try:
+            print("Make withdrawal.")
+            name = input("Please enter category name to withdraw from: ")
+            if name in names:
+                value = int(input("Please enter amount to withdraw: "))
+                for budget in budgets:
+                    if budget.name == name:
+                        budget.withdraw(value)
+                print(f"€ {value} withdrawn from {name} successfully!")
+                wait_here()
+            else:
+                print("Uknown category. Withdrawal not processed!")
+                wait_here()
+        
+        except ValueError:
+            print("Error. Invalid input! Withdrawal not processed!")
+            wait_here()
 
     elif selection == 3:
         clear()
@@ -64,6 +78,7 @@ while control:
         print("View categories.")
         for budget in budgets:
             print(budget)
+        wait_here()
 
     elif selection == 6:
         clear()
