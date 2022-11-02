@@ -1,0 +1,5 @@
+2022-11-02 01:15:03.326531 Name: food, initial budget: 700. Category created.
+2022-11-02 01:15:48.933123 Name: food, 15 withdrawn. Balance: 685.
+2022-11-02 01:16:44.853014 Name: food, 110 lodged. Balance: 795.
+2022-11-02 01:17:26.445997 Name: food, 5 lodged. Balance: 800.
+2022-11-02 01:17:55.352258 200 transfered from food to bills. Balance: 600.

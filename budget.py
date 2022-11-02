@@ -36,7 +36,7 @@ class Budget():
         return amount
 
     def get_balance(self):
-        return self.amount
+        return self.balance
 
     def transfer(self, amount, category):
         self.withdraw(category.deposit(amount))

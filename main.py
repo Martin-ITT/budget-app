@@ -1,5 +1,6 @@
 import os
 import time
+import datetime
 from budget import Budget
 
 control = True # loop control
@@ -39,6 +40,9 @@ while control:
             else:
                 budgets.append(Budget(name, value))
                 names.append(name)
+                with open(f"{name}.txt", "w") as file1:
+                    time_stamp = datetime.datetime.now()
+                    file1.write(f"{time_stamp} Name: {name}, initial budget: {value}. Category created.\n")
                 print(f"Category {name} created. Budget: {value}.")
                 wait_here()
         except ValueError:
@@ -55,6 +59,10 @@ while control:
                 for budget in budgets:
                     if budget.name == name:
                         budget.withdraw(value)
+                        new_balance = budget.get_balance()
+                with open(f"{name}.txt", "a") as file1:
+                    time_stamp = datetime.datetime.now()
+                    file1.write(f"{time_stamp} Name: {name}, {value} withdrawn. Balance: {new_balance}.\n")
                 print(f"€{value} withdrawn from {name} successfully!")
                 wait_here()
             else:
@@ -75,6 +83,10 @@ while control:
                 for budget in budgets:
                     if budget.name == name:
                         budget.deposit(value)
+                        new_balance = budget.get_balance()
+                with open(f"{name}.txt", "a") as file1:
+                    time_stamp = datetime.datetime.now()
+                    file1.write(f"{time_stamp} Name: {name}, {value} lodged. Balance: {new_balance}.\n")
                 print(f"€{value} lodged to {name} successfully!")
                 wait_here()
             else:
@@ -96,8 +108,16 @@ while control:
                 for budget in budgets:
                     if budget.name == from_name:
                         budget.withdraw(value)
+                        from_value = budget.get_balance()
                     if budget.name == to_name:
                         budget.deposit(value)
+                        to_value = budget.get_balance()
+                with open(f"{from_name}.txt", "a") as file1:
+                    time_stamp = datetime.datetime.now()
+                    file1.write(f"{time_stamp} €{value} transfered to {to_name}. Balance: {from_value}.\n")
+                with open(f"{to_name}.txt", "a") as file1:
+                    time_stamp = datetime.datetime.now()
+                    file1.write(f"{time_stamp} €{value} received transfer from {from_name}. Balance: {to_value}.\n")
                 print(f"€{value} transfered from {from_name} to {to_name} successfully!")
                 wait_here()
             else:
