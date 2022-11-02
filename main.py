@@ -68,7 +68,9 @@ while control:
             else:
                 print("Uknown category. Withdrawal not processed!")
                 wait_here()
-        
+        except TypeError as e:
+            print(e)
+            wait_here()
         except ValueError:
             print("Error. Invalid input! Withdrawal not processed!")
             wait_here()
@@ -123,7 +125,9 @@ while control:
             else:
                 print("Uknown category. Transfer not processed!")
                 wait_here()
-        
+        except TypeError as e:
+            print(e)
+            wait_here()
         except ValueError:
             print("Error. Invalid input! Transfer not processed!")
             wait_here()

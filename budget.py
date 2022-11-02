@@ -32,8 +32,11 @@ class Budget():
         return amount
 
     def withdraw(self, amount):
-        self.balance -= amount
-        return amount
+        if self.balance - amount >= 0:
+            self.balance -= amount
+            return amount
+        else:
+            raise TypeError("Error. Not enough funds.")
 
     def get_balance(self):
         return self.balance

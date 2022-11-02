@@ -1,5 +1,2 @@
-2022-11-02 01:15:20.427589 Name: bills, initial budget: 900. Category created.
-2022-11-02 01:16:07.517048 Name: bills, 350 withdrawn. Balance: 550.
-2022-11-02 01:16:30.098098 Name: bills, 40 lodged. Balance: 590.
-2022-11-02 01:17:14.225020 Name: bills, 90 withdrawn. Balance: 500.
-2022-11-02 01:17:55.356247 200 transfered to bills from food. Balance: 700.
+2022-11-02 09:55:49.807854 Name: bills, initial budget: 250. Category created.
+2022-11-02 09:57:42.772510 €600 received transfer from food. Balance: 850.
