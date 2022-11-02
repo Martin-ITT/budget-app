@@ -48,14 +48,14 @@ while control:
     elif selection == 2:
         clear()
         try:
-            print("Make withdrawal.")
+            print("Make a withdrawal.")
             name = input("Please enter category name to withdraw from: ")
             if name in names:
                 value = int(input("Please enter amount to withdraw: "))
                 for budget in budgets:
                     if budget.name == name:
                         budget.withdraw(value)
-                print(f"€ {value} withdrawn from {name} successfully!")
+                print(f"€{value} withdrawn from {name} successfully!")
                 wait_here()
             else:
                 print("Uknown category. Withdrawal not processed!")
@@ -67,17 +67,53 @@ while control:
 
     elif selection == 3:
         clear()
-        print("Make lodgement.")
+        try:
+            print("Make a lodgement.")
+            name = input("Please enter category name to make a lodgement: ")
+            if name in names:
+                value = int(input("Please enter amount to lodge: "))
+                for budget in budgets:
+                    if budget.name == name:
+                        budget.deposit(value)
+                print(f"€{value} lodged to {name} successfully!")
+                wait_here()
+            else:
+                print("Uknown category. Lodgement not processed!")
+                wait_here()
+        
+        except ValueError:
+            print("Error. Invalid input! Lodgement not processed!")
+            wait_here()
 
     elif selection == 4:
         clear()
-        print("Make transfer.")
+        try:
+            print("Make a transfer.")
+            from_name = input("Please enter category name to transfer from: ")
+            to_name = input("Please enter category name to transfer into: ")
+            if from_name in names and to_name in names:
+                value = int(input("Please enter amount to transfer: "))
+                for budget in budgets:
+                    if budget.name == from_name:
+                        budget.withdraw(value)
+                    if budget.name == to_name:
+                        budget.deposit(value)
+                print(f"€{value} transfered from {from_name} to {to_name} successfully!")
+                wait_here()
+            else:
+                print("Uknown category. Transfer not processed!")
+                wait_here()
+        
+        except ValueError:
+            print("Error. Invalid input! Transfer not processed!")
+            wait_here()
 
     elif selection == 5:
         clear()
         print("View categories.")
         for budget in budgets:
             print(budget)
+        time.sleep(2)
         wait_here()
 
     elif selection == 6:
